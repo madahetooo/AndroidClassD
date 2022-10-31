@@ -1,5 +1,7 @@
 # fullAndroidCourseClassD
 This project is for training purposes in Android with Kotlin Course.
+
+
 <img width="200" heigth="400"  src="https://user-images.githubusercontent.com/28203059/177842125-9d608e03-ff6e-4854-bfd9-323548cee6b0.png">
 <img width="200" heigth="400"  src="https://user-images.githubusercontent.com/28203059/177842192-cd7010a1-9bce-451d-800b-fe3b0881b161.png">
 <img width="200" heigth="400"  src="https://user-images.githubusercontent.com/28203059/177842200-16d4a343-e5a1-417b-947c-8a15ee97ea47.png">
