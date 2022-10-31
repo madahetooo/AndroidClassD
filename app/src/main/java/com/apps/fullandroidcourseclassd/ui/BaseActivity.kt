@@ -1,0 +1,91 @@
+package com.apps.fullandroidcourseclassd.ui
+
+import android.content.DialogInterface
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
+import com.apps.fullandroidcourseclassd.*
+import com.apps.fullandroidcourseclassd.authsystem.LoginActivity
+import com.apps.fullandroidcourseclassd.bullscarsapp.ui.BullsCarsActivity
+import com.apps.fullandroidcourseclassd.databinding.ActivityBaseBinding
+import com.apps.fullandroidcourseclassd.firebasefirestoreapp.ui.FirestoreApp
+import com.apps.fullandroidcourseclassd.ui.fragments.ArchiveFragment
+import com.apps.fullandroidcourseclassd.ui.fragments.InboxFragment
+
+class BaseActivity : AppCompatActivity() {
+    lateinit var toggle: ActionBarDrawerToggle
+    lateinit var binding: ActivityBaseBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityBaseBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+        setCurrentFragment(InboxFragment()) // Set InboxFragment as Main Layout
+        toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
+        binding.drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.miInbox -> {
+                    val mainFragment = MainActivity()
+                    setCurrentFragment(mainFragment)
+                    binding.drawerLayout.close()
+
+                }
+                R.id.miSent -> {
+             val firestoreFragment = FirestoreApp()
+                    setCurrentFragment(firestoreFragment)
+                    binding.drawerLayout.close()
+                }
+                R.id.miStarred -> {
+                    val starredFragment = BullsCarsActivity()
+                    setCurrentFragment(starredFragment)
+                    binding.drawerLayout.close()
+                }
+                R.id.miArchive -> {
+                    val archiveFragment = ArchiveFragment()
+                    setCurrentFragment(archiveFragment)
+                    binding.drawerLayout.close()
+                }
+                R.id.miLogOut -> {
+                    val exitAlertDialog = AlertDialog.Builder(this)
+                        .setIcon(R.drawable.ic_logout)
+                        .setTitle("Exit")
+                        .setCancelable(false)
+                        .setMessage("Do you want to exit ?!")
+                        .setPositiveButton("Yes") { dialogInterface: DialogInterface, i: Int ->
+                            val intent = Intent(this, LoginActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                        .setNegativeButton("No") { dialogInterface: DialogInterface, i: Int ->
+                            dialogInterface.cancel() // cancel
+                        }
+                    val alertDialog = exitAlertDialog.create()
+                    alertDialog.show()
+                }
+            }
+            true
+        }
+
+
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+
+    }
+
+    private fun setCurrentFragment(fragment: Fragment) =
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.clContent, fragment)
+            commit() // apply changes
+        }
+}

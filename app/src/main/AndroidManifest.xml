@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.apps.fullandroidcourseclassd">
+
+    <application
+        android:name="com.apps.fullandroidcourseclassd.breakingbadapi.BreakingBadApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/bullsrentlogo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/bullsrentlogo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FullAndroidCourseClassD">
+        <activity
+            android:name="com.apps.fullandroidcourseclassd.firebasestorageapp.ui.ClothesApp"
+            android:exported="false" />
+        <activity
+            android:name="com.apps.fullandroidcourseclassd.todolistapiapp.ui.TodoListApiActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.apps.fullandroidcourseclassd.shoppingitemlistapp.ui.ShoppingActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.apps.fullandroidcourseclassd.coroutineapp.CoroutineActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.apps.fullandroidcourseclassd.breakingbadapi.ui.BreakingBadActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.apps.fullandroidcourseclassd.MotherOfTheApps"
+            android:exported="false" />
+        <activity
+            android:name="com.apps.fullandroidcourseclassd.ui.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.apps.fullandroidcourseclassd.ui.BaseActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.apps.fullandroidcourseclassd.authsystem.RegistrationActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.apps.fullandroidcourseclassd.authsystem.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.apps.fullandroidcourseclassd.ui.SplashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
